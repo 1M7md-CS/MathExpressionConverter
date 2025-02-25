@@ -8,7 +8,6 @@ import java.util.Stack;
 public class InfixToPostfixConverter {
 
 	public static String convert(String expression) {
-
 		Checker.checkBalancedParentheses(expression);
 		Checker.checkValidCharacters(expression);
 
@@ -32,10 +31,9 @@ public class InfixToPostfixConverter {
 				while (!stack.isEmpty() && stack.peek() != '(') {
 					builder.append(stack.pop()).append(" ");
 				}
-
 				if (!stack.isEmpty()) stack.pop();
 			} else if (OperatorHandler.isOperator(ch)) {
-				while (!stack.isEmpty() && stack.peek() != '(' && OperatorHandler.priority(stack.peek()) >= OperatorHandler.priority(ch)) {
+				while (!stack.isEmpty() && stack.peek() != '(' && OperatorHandler.priority(stack.peek()) > OperatorHandler.priority(ch)) {
 					builder.append(stack.pop()).append(" ");
 				}
 				stack.push(ch);
