@@ -1,18 +1,17 @@
 package converter;
 
-import utils.BalancedParentheses;
+import utils.Checker;
 
 public class InfixToPrefixConverter {
 
 	public static String convert(String expression) {
 
-		if (!BalancedParentheses.isBalanced(expression)) {
-			throw new IllegalArgumentException("Error: Unbalanced parentheses in expression!");
-		}
+		Checker.checkBalancedParentheses(expression);
+		Checker.checkValidCharacters(expression);
 
 		expression = new StringBuilder(expression).reverse().toString();
 
-		expression = expression.replace('(', ' ').replace(')', '(').replace(' ', ')');
+		expression = expression.replace('(', '#').replace(')', '(').replace('#', ')');
 
 		String postfix = InfixToPostfixConverter.convert(expression);
 
