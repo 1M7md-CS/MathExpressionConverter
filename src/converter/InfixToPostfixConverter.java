@@ -1,6 +1,6 @@
 package converter;
 
-import utils.BalancedParentheses;
+import utils.Checker;
 import utils.OperatorHandler;
 
 import java.util.Stack;
@@ -8,15 +8,9 @@ import java.util.Stack;
 public class InfixToPostfixConverter {
 
 	public static String convert(String expression) {
-		if (!BalancedParentheses.isBalanced(expression)) {
-			throw new IllegalArgumentException("Error: Unbalanced parentheses in expression!");
-		}
 
-		for (char ch : expression.toCharArray()) {
-			if (!Character.isDigit(ch) && !OperatorHandler.isOperator(ch) && ch != '(' && ch != ')' && !Character.isWhitespace(ch)) {
-				throw new IllegalArgumentException("Error: Unsupported character '" + ch + "' in expression. Only numbers and operators are allowed.");
-			}
-		}
+		Checker.checkBalancedParentheses(expression);
+		Checker.checkValidCharacters(expression);
 
 		Stack<Character> stack = new Stack<>();
 		StringBuilder builder = new StringBuilder();
