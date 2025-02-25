@@ -22,5 +22,14 @@ public class OperatorHandler {
 		};
 	}
 
+	public static int priority(char ch) {
+		return switch (ch) {
+			case '+', '-' -> 1;
+			case '*', '/' -> 2;
+			case '^' -> 3;
+			default -> 0;
+		};
+	}
+
 
 }
