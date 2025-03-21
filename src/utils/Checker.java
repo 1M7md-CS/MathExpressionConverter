@@ -2,6 +2,12 @@ package utils;
 
 public class Checker {
 
+	public static void checkNullOrEmpty(String expression) {
+		if (expression == null || expression.trim().isEmpty()) {
+			throw new IllegalArgumentException("Expression cannot be null or empty.");
+		}
+	}
+
 	public static void checkBalancedParentheses(String expression) {
 		if (!BalancedParentheses.isBalanced(expression)) {
 			throw new IllegalArgumentException("Error: Unbalanced parentheses in expression!");
