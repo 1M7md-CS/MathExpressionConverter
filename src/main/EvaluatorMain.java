@@ -1,4 +1,4 @@
-import converter.InfixToPrefixConverter;
+package main;
 
 public class EvaluatorMain {
 
