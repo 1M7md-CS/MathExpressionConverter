@@ -1,6 +1,10 @@
 package utils;
 
-public class OperatorHandler {
+public class ExpressionUtils {
+
+	public static boolean isNumber(String token) {
+		return token.matches("-?\\d+");
+	}
 
 	public static boolean isOperator(char element) {
 		return element == '+' || element == '-' || element == '*' || element == '/' || element == '^';
@@ -30,6 +34,4 @@ public class OperatorHandler {
 			default -> 0;
 		};
 	}
-
-
 }

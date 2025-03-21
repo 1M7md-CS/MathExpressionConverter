@@ -6,9 +6,9 @@ public class InfixToPrefixConverter {
 
 	public static String convert(String expression) {
 
-		Checker.checkNullOrEmpty(expression);
-		Checker.checkBalancedParentheses(expression);
-		Checker.checkValidCharacters(expression);
+		Checker.isNullOrEmpty(expression);
+		Checker.isBalancedParentheses(expression);
+		Checker.isValidCharacters(expression);
 
 		String reversedExpression = reverseExpression(expression);
 

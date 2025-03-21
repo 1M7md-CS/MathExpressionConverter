@@ -1,7 +1,7 @@
 package converter;
 
 import utils.Checker;
-import utils.OperatorHandler;
+import utils.ExpressionUtils;
 
 import java.util.Stack;
 
@@ -9,9 +9,9 @@ public class InfixToPostfixConverter {
 
 	public static String convert(String expression) {
 
-		Checker.checkNullOrEmpty(expression);
-		Checker.checkBalancedParentheses(expression);
-		Checker.checkValidCharacters(expression);
+		Checker.isNullOrEmpty(expression);
+		Checker.isBalancedParentheses(expression);
+		Checker.isValidCharacters(expression);
 
 		Stack<Character> stack = new Stack<>();
 		StringBuilder postfix = new StringBuilder();
@@ -26,7 +26,7 @@ public class InfixToPostfixConverter {
 				stack.push(ch);
 			} else if (ch == ')') {
 				handleClosingParenthesis(stack, postfix);
-			} else if (OperatorHandler.isOperator(ch)) {
+			} else if (ExpressionUtils.isOperator(ch)) {
 				handleOperator(ch, stack, postfix);
 			}
 		}
@@ -56,7 +56,7 @@ public class InfixToPostfixConverter {
 	}
 
 	private static void handleOperator(char operator, Stack<Character> stack, StringBuilder postfix) {
-		while (!stack.isEmpty() && stack.peek() != '(' && OperatorHandler.priority(stack.peek()) >= OperatorHandler.priority(operator)) {
+		while (!stack.isEmpty() && stack.peek() != '(' && ExpressionUtils.priority(stack.peek()) >= ExpressionUtils.priority(operator)) {
 			postfix.append(stack.pop()).append(" ");
 		}
 		stack.push(operator);
