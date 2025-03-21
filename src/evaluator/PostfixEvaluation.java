@@ -7,7 +7,7 @@ import utils.ExpressionUtils;
 
 public class PostfixEvaluation {
 
-	public static int evaluate(String expression) {
+	public static double evaluate(String expression) {
 
 		Checker.isNullOrEmpty(expression);
 
@@ -15,18 +15,18 @@ public class PostfixEvaluation {
 			throw new IllegalArgumentException("Invalid postfix expression.");
 		}
 
-		Stack<Integer> stack = new Stack<>();
+		Stack<Double> stack = new Stack<>();
 		String[] tokens = expression.split("\\s+");
 
 		for (String token : tokens) {
 			if (token.isEmpty()) continue;
 
 			if (ExpressionUtils.isNumber(token)) {
-				stack.push(Integer.parseInt(token));
+				stack.push(Double.parseDouble(token));
 			} else if (ExpressionUtils.isOperator(token.charAt(0))) {
-				int secondOperand = stack.pop();
-				int firstOperand = stack.pop();
-				int result = ExpressionUtils.applyOperator(firstOperand, token.charAt(0), secondOperand);
+				double secondOperand = stack.pop();
+				double firstOperand = stack.pop();
+				double result = ExpressionUtils.applyOperator(firstOperand, token.charAt(0), secondOperand);
 				stack.push(result);
 			}
 		}

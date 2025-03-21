@@ -10,7 +10,7 @@ public class ExpressionUtils {
 		return element == '+' || element == '-' || element == '*' || element == '/' || element == '^';
 	}
 
-	public static int applyOperator(int first, char operator, int second) {
+	public static double applyOperator(double first, char operator, double second) {
 		return switch (operator) {
 			case '+' -> first + second;
 			case '-' -> first - second;
@@ -21,7 +21,7 @@ public class ExpressionUtils {
 				}
 				yield first / second;
 			}
-			case '^' -> (int) Math.pow(first, second);
+			case '^' -> Math.pow(first, second);
 			default -> throw new IllegalArgumentException("Unknown operator: " + operator);
 		};
 	}

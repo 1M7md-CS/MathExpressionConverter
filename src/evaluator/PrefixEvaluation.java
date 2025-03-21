@@ -7,14 +7,14 @@ import utils.ExpressionUtils;
 
 public class PrefixEvaluation {
 
-	public static int evaluate(String expression) {
+	public static double evaluate(String expression) {
 		Checker.isNullOrEmpty(expression);
 
 		if (!Checker.isValidPrefix(expression)) {
 			throw new IllegalArgumentException("Invalid prefix expression.");
 		}
 
-		Stack<Integer> stack = new Stack<>();
+		Stack<Double> stack = new Stack<>();
 		String[] tokens = expression.split("\\s+");
 
 		for (int i = tokens.length - 1; i >= 0; i--) {
@@ -23,14 +23,14 @@ public class PrefixEvaluation {
 			if (token.isEmpty()) continue;
 
 			if (ExpressionUtils.isNumber(token)) {
-				stack.push(Integer.parseInt(token));
+				stack.push(Double.parseDouble(token));
 			} else if (ExpressionUtils.isOperator(token.charAt(0))) {
 				if (stack.size() < 2) {
 					throw new IllegalArgumentException("Invalid prefix expression: not enough operands for operator " + token);
 				}
-				int firstOperand = stack.pop();
-				int secondOperand = stack.pop();
-				int result = ExpressionUtils.applyOperator(firstOperand, token.charAt(0), secondOperand);
+				double firstOperand = stack.pop();
+				double secondOperand = stack.pop();
+				double result = ExpressionUtils.applyOperator(firstOperand, token.charAt(0), secondOperand);
 				stack.push(result);
 			} else {
 				throw new IllegalArgumentException("Invalid token in expression: " + token);
