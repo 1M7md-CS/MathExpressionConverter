@@ -3,7 +3,7 @@ package utils;
 public class ExpressionUtils {
 
 	public static boolean isNumber(String token) {
-		return token.matches("-?\\d+");
+		return token.matches("-?\\d+(\\.\\d+)?");
 	}
 
 	public static boolean isOperator(char element) {
