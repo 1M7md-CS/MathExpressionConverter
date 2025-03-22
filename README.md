@@ -21,10 +21,10 @@
 - **InfixToPrefix** → Converts expressions from Infix to Prefix.
 - **PostfixEvaluator** → Evaluates expressions in Postfix notation.
 - **PrefixEvaluator** → Evaluates expressions in Prefix notation.
-- **OperatorHandler** → Handles the logic for operator precedence and operations.
+- **ExpressionUtils** → Utility class for number validation, operator handling, and precedence in math expressions.
 - **Checker** → Validates the input expressions to ensure correct formatting.
 - **BalancedParentheses** → Ensures parentheses in expressions are balanced.
 
 ---
 
-📌 _Developed with Java_ ☕
+📌 _Developed with **Java**_ ☕
