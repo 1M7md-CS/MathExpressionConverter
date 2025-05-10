@@ -34,7 +34,7 @@ git clone https://github.com/1M7md-CS/math-expression-converter.git
 cd math-expression-converter
 
 # Compile the Java files
-javac -d bin src/*.java
+javac -d bin src\converter\*.java src\evaluator\*.java src\utils\*.java src\main\*.java
 
 # Run the application
 java -cp bin main.EvaluatorMain
