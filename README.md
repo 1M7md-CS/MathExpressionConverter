@@ -33,8 +33,11 @@ git clone https://github.com/1M7md-CS/math-expression-converter.git
 # Navigate to the project directory
 cd math-expression-converter
 
-# Run the application (if using Maven)
-mvn compile exec:java
+# Compile the Java files
+javac -d bin src/*.java
+
+# Run the application
+java -cp bin main.EvaluatorMain
 ```
 
 ## Usage
